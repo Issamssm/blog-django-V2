@@ -1,0 +1,106 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<!-- ====== Hero Section Start -->
+<div id="home" class="relative overflow-hidden bg-primary pt-[120px] md:pt-[130px] lg:pt-[160px]">
+    <div class="container p-5">
+        <div class="-mx-4 flex flex-wrap items-center">
+            <div class="w-full px-4">
+                <div class="hero-content wow fadeInUp mx-auto max-w-[780px] text-center" data-wow-delay=".2s">
+
+                    <form method="POST" class="flex justify-center">
+                        {% csrf_token %}
+                        <div class="flex items-center w-full">
+                            <input type="text" name="search" placeholder="Search" style="border-radius: 15px 0 0 15px;"
+                                class=" w-full py-2 px-4 border-t border-b border-l text-gray-800 border-gray-200 bg-white focus:outline-none focus:border-gray-500">
+                            <button style="border-radius: 0 15px 15px 0;"
+                                class="rounded-r-lg bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 border border-blue-500 hover:border-blue-600 transition duration-300">Search</button>
+                        </div>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- ====== Hero Section End -->
+{% if searched %}
+<!-- ====== Blog Section Start -->
+<section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
+    <div class="container">
+        <h2 class="mb-12 text-3xl font-bold text-dark sm:text-4xl md:text-[42px]">
+            Posts :
+        </h2>
+        <div class="flex flex-wrap">
+            {% for post in searched %}
+            <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                <div class="wow fadeInUp group mb-10" data-wow-delay=".1s">
+                    <div class="mb-8 overflow-hidden rounded" style="height:11rem;">
+                        <a href="{% url 'detail' post.id %}" class="block postimage">
+                            <img src="{{post.image.url}}" alt="image" style="height:11rem;" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
+                            
+                            <span class="mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl">
+                            {% if post.title|length > 50 %}
+                            {{post.title|slice:'25'}}...
+                            {% else %}
+                            {{post.title}}
+                            {% endif %}
+                            </span>
+                            
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            {%empty%}
+            <p class='p-8 text-xl font-bold'>No Post found :(</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- ====== Blog Section End -->
+{% else %}
+<!-- ====== Blog Section Start -->
+<section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
+    <div class="container">
+        <h2 class="mb-12 text-3xl font-bold text-dark sm:text-4xl md:text-[42px]">
+            Posts :
+        </h2>
+        <div class="flex flex-wrap">
+            {% for post in posts %}
+            <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                <div class="wow fadeInUp group mb-10" data-wow-delay=".1s">
+                    <div class="mb-8 overflow-hidden rounded" style="height:11rem;">
+                        <a href="{% url 'detail' post.id %}" class="block postimage">
+                            <img src="{{post.image.url}}" alt="image" style="height:11rem;" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
+                            
+                            <span class="mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl">
+                            {% if post.title|length > 50 %}
+                            {{post.title|slice:'25'}}...
+                            {% else %}
+                            {{post.title}}
+                            {% endif %}
+                            </span>
+                            
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            {%empty%}
+            <p class='p-8 text-xl font-bold'>No Post found :(</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- ====== Blog Section End -->
+{% endif %}
+
+
+
+{% endblock content %}

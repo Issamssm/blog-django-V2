@@ -1,0 +1,32 @@
+       {% if page.paginator.num_pages > 1 %}
+       <div class="flex" style="justify-content: space-around; align-items:center;">
+            <!-- Previous Button -->
+            {% if page.has_previous %}
+            <a href="?page={{page.previous_page_number}}" style="gap: 10px;"
+                class="prevclass flex items-center justify-center px-4 h-10 mr-3 text-base font-medium text-white bg-primary border border-gray-300 rounded-lg ">
+                <i class="fa-solid fa-arrow-left"></i>
+                Previous
+            </a>
+            {% else %}
+            <a style="gap: 10px;"
+                class="prevclass flex items-center justify-center px-4 h-10 mr-3 text-base font-medium text-white bg-opacity-20 bg-primary border border-gray-300 rounded-lg ">
+                <i class="fa-solid fa-arrow-left"></i>
+                Previous
+            </a>
+            {% endif %}
+            <span class="numberpaginate text-lg" style="font-weight:700;">Page {{page.number}} from {{page.paginator.num_pages}}</span>
+            {% if page.has_next %}
+            <a href="?page={{page.next_page_number}}"  style="gap: 10px;"
+                class="nextclass flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-primary border border-gray-300 rounded-lg ">
+                Next
+                <i class="fa-solid fa-arrow-left fa-rotate-180"></i>
+            </a>
+            {% else %}
+            <a style="gap: 10px;"
+                class="nextclass flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-primary bg-opacity-20 border border-gray-300 rounded-lg ">
+                Next
+                <i class="fa-solid fa-arrow-left fa-rotate-180"></i>
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}   

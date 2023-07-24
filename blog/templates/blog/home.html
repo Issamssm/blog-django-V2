@@ -1,0 +1,96 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<!-- ====== Hero Section Start -->
+<div id="home" class="relative overflow-hidden bg-primary pt-[120px] md:pt-[130px] lg:pt-[160px]">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert" style="z-index: 999; top: 15%; left: 3%; right: 57%;background-color:green;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="container">
+        <div class="-mx-4 flex flex-wrap items-center">
+            <div class="w-full px-4">
+                <div class="hero-content wow fadeInUp mx-auto max-w-[780px] text-center" data-wow-delay=".2s">
+
+                    <p
+                        class="mx-auto mb-10 max-w-[600px] text-[#e4e4e4] sm:text-lg sm:leading-relaxed md:text-xl md:leading-relaxed">
+                        Welcome
+                        {% if user.is_authenticated %}
+                        <span style='font-weight:900;'> {{user.username}}</span>.
+                        {% else %}
+                        <span style='font-weight:900;'> User</span>.
+                        {% endif %}
+                        Create an article in any field
+                        and share it with your friends to spread the benefit
+                    </p>
+                    <ul class="mb-10 flex flex-wrap items-center justify-center">
+                        <li>
+                            <a href="search"
+                                class="flex items-center py-4 px-6 text-base font-medium text-white transition duration-300 ease-in-out hover:opacity-70 sm:px-10">
+                                Search for posts
+                                <span class="pl-2">
+                                    <svg width="20" height="8" viewBox="0 0 20 8" class="fill-current">
+                                        <path
+                                            d="M19.2188 2.90632L17.0625 0.343819C16.875 0.125069 16.5312 0.0938193 16.2812 0.281319C16.0625 0.468819 16.0312 0.812569 16.2188 1.06257L18.25 3.46882H0.9375C0.625 3.46882 0.375 3.71882 0.375 4.03132C0.375 4.34382 0.625 4.59382 0.9375 4.59382H18.25L16.2188 7.00007C16.0312 7.21882 16.0625 7.56257 16.2812 7.78132C16.375 7.87507 16.5 7.90632 16.625 7.90632C16.7812 7.90632 16.9375 7.84382 17.0312 7.71882L19.1875 5.15632C19.75 4.46882 19.75 3.53132 19.2188 2.90632Z" />
+                                    </svg>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<!-- ====== Hero Section End -->
+
+<!-- ====== Blog Section Start -->
+<section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
+    <div class="container">
+        <h2 class="mb-12 text-3xl font-bold text-dark sm:text-4xl md:text-[42px]">
+            Posts :
+        </h2>
+        <div class="flex flex-wrap">
+            {% for post in posts %}
+            <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                <div class="wow fadeInUp group mb-10" data-wow-delay=".1s">
+                    <div class="mb-8 overflow-hidden rounded" style="height:11rem;">
+                        <a href="{% url 'detail' post.id %}" class="block postimage">
+                            <img src="{{post.image.url}}" alt="image" style="height:11rem;" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
+                            
+                            <span class="mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl">
+                            {% if post.title|length > 50 %}
+                            {{post.title|slice:'25'}}...
+                            {% else %}
+                            {{post.title}}
+                            {% endif %}
+                            </span>
+                            
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            {%empty%}
+            <p class='p-8 text-xl font-bold'>No Post found :(</p>
+            {% endfor %}
+
+        </div>
+
+        {% include 'blog/paginator.html' with page=posts %}
+
+    </div>
+</section>
+<!-- ====== Blog Section End -->
+
+
+
+{% endblock content %}

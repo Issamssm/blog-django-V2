@@ -1,0 +1,359 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load post_tag %}
+{% block content %}
+<!-- ====== Banner Section Start -->
+<div class="relative z-10 overflow-hidden bg-primary pt-[120px] pb-20 md:pt-17 lg:pt-17">
+    <div>
+        <span class="absolute top-0 left-0 z-[-1]">
+            <svg width="495" height="470" viewBox="0 0 495 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="55" cy="442" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50" />
+                <circle cx="446" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20" />
+                <path d="M245.406 137.609L233.985 94.9852L276.609 106.406L245.406 137.609Z" stroke="white"
+                    stroke-opacity="0.08" stroke-width="12" />
+            </svg>
+        </span>
+        <span class="absolute top-0 right-0 z-[-1]">
+            <svg width="493" height="470" viewBox="0 0 493 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="462" cy="5" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50" />
+                <circle cx="49" cy="470" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20" />
+                <path d="M222.393 226.701L272.808 213.192L259.299 263.607L222.393 226.701Z" stroke="white"
+                    stroke-opacity="0.06" stroke-width="13" />
+            </svg>
+        </span>
+    </div>
+</div>
+<!-- ====== Banner Section End -->
+
+<!-- ====== Blog Details Section Start -->
+<section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
+    <div class="container">
+        <div class="-mx-4 flex flex-wrap justify-center">
+            <div class="w-full px-4">
+                <div class="wow fadeInUp relative z-20 mb-[60px] h-[300px] overflow-hidden rounded md:h-[400px] lg:h-[500px]"
+                    data-wow-delay=".1s
+              ">
+                    <img src="{{post.image.url}}" alt="image" class="h-full w-full object-cover object-center" />
+                    <div
+                        class="absolute top-0 left-0 z-10 flex h-full w-full items-end bg-gradient-to-t from-dark-700 to-transparent">
+                        <div class="flex flex-wrap items-center p-4 pb-4 sm:p-8">
+                            <div class="mb-4 mr-5 flex items-center md:mr-10">
+                                <div class="mr-4 h-10 w-10 overflow-hidden rounded-full">
+                                    <img style="height:100%;" src="{{post.author.profile.image.url}}" alt="image"
+                                        class="w-full" />
+                                </div>
+                                <p class="text-base font-medium text-white">
+                                    By
+                                    <a href="javascript:void(0)" class="text-white hover:opacity-70">
+                                        {{post.author}}
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mb-4 flex items-center" style="display: flex; flex-wrap:wrap;">
+                                <p class="mr-5 flex items-center text-sm font-medium text-white md:mr-8">
+                                    <span class="mr-3">
+                                        <svg width="15" height="15" viewBox="0 0 15 15" class="fill-current">
+                                            <path
+                                                d="M3.8958 8.67529H3.10715C2.96376 8.67529 2.86816 8.77089 2.86816 8.91428V9.67904C2.86816 9.82243 2.96376 9.91802 3.10715 9.91802H3.8958C4.03919 9.91802 4.13479 9.82243 4.13479 9.67904V8.91428C4.13479 8.77089 4.03919 8.67529 3.8958 8.67529Z" />
+                                            <path
+                                                d="M6.429 8.67529H5.64035C5.49696 8.67529 5.40137 8.77089 5.40137 8.91428V9.67904C5.40137 9.82243 5.49696 9.91802 5.64035 9.91802H6.429C6.57239 9.91802 6.66799 9.82243 6.66799 9.67904V8.91428C6.66799 8.77089 6.5485 8.67529 6.429 8.67529Z" />
+                                            <path
+                                                d="M8.93779 8.67529H8.14914C8.00575 8.67529 7.91016 8.77089 7.91016 8.91428V9.67904C7.91016 9.82243 8.00575 9.91802 8.14914 9.91802H8.93779C9.08118 9.91802 9.17678 9.82243 9.17678 9.67904V8.91428C9.17678 8.77089 9.08118 8.67529 8.93779 8.67529Z" />
+                                            <path
+                                                d="M11.472 8.67529H10.6833C10.5399 8.67529 10.4443 8.77089 10.4443 8.91428V9.67904C10.4443 9.82243 10.5399 9.91802 10.6833 9.91802H11.472C11.6154 9.91802 11.711 9.82243 11.711 9.67904V8.91428C11.711 8.77089 11.5915 8.67529 11.472 8.67529Z" />
+                                            <path
+                                                d="M3.8958 11.1606H3.10715C2.96376 11.1606 2.86816 11.2562 2.86816 11.3996V12.1644C2.86816 12.3078 2.96376 12.4034 3.10715 12.4034H3.8958C4.03919 12.4034 4.13479 12.3078 4.13479 12.1644V11.3996C4.13479 11.2562 4.03919 11.1606 3.8958 11.1606Z" />
+                                            <path
+                                                d="M6.429 11.1606H5.64035C5.49696 11.1606 5.40137 11.2562 5.40137 11.3996V12.1644C5.40137 12.3078 5.49696 12.4034 5.64035 12.4034H6.429C6.57239 12.4034 6.66799 12.3078 6.66799 12.1644V11.3996C6.66799 11.2562 6.5485 11.1606 6.429 11.1606Z" />
+                                            <path
+                                                d="M8.93779 11.1606H8.14914C8.00575 11.1606 7.91016 11.2562 7.91016 11.3996V12.1644C7.91016 12.3078 8.00575 12.4034 8.14914 12.4034H8.93779C9.08118 12.4034 9.17678 12.3078 9.17678 12.1644V11.3996C9.17678 11.2562 9.08118 11.1606 8.93779 11.1606Z" />
+                                            <path
+                                                d="M11.472 11.1606H10.6833C10.5399 11.1606 10.4443 11.2562 10.4443 11.3996V12.1644C10.4443 12.3078 10.5399 12.4034 10.6833 12.4034H11.472C11.6154 12.4034 11.711 12.3078 11.711 12.1644V11.3996C11.711 11.2562 11.5915 11.1606 11.472 11.1606Z" />
+                                            <path
+                                                d="M13.2637 3.3697H7.64754V2.58105C8.19721 2.43765 8.62738 1.91189 8.62738 1.31442C8.62738 0.597464 8.02992 0 7.28906 0C6.54821 0 5.95074 0.597464 5.95074 1.31442C5.95074 1.91189 6.35702 2.41376 6.93058 2.58105V3.3697H1.31442C0.597464 3.3697 0 3.96716 0 4.68412V13.2637C0 13.9807 0.597464 14.5781 1.31442 14.5781H13.2637C13.9807 14.5781 14.5781 13.9807 14.5781 13.2637V4.68412C14.5781 3.96716 13.9807 3.3697 13.2637 3.3697ZM6.6677 1.31442C6.6677 0.979841 6.93058 0.716957 7.28906 0.716957C7.62364 0.716957 7.91042 0.979841 7.91042 1.31442C7.91042 1.649 7.64754 1.91189 7.28906 1.91189C6.95448 1.91189 6.6677 1.6251 6.6677 1.31442ZM1.31442 4.08665H13.2637C13.5983 4.08665 13.8612 4.34954 13.8612 4.68412V6.45261H0.716957V4.68412C0.716957 4.34954 0.979841 4.08665 1.31442 4.08665ZM13.2637 13.8612H1.31442C0.979841 13.8612 0.716957 13.5983 0.716957 13.2637V7.16957H13.8612V13.2637C13.8612 13.5983 13.5983 13.8612 13.2637 13.8612Z" />
+                                        </svg>
+                                    </span>
+                                    {{post.post_date|date:'d-m-Y'}}
+                                </p>
+                                <div style="display: flex;">
+                                    <p class="mr-5 flex items-center text-sm font-medium text-white md:mr-8">
+                                        <span class="mr-3">
+                                            <svg width="18" height="13" viewBox="0 0 18 13" class="fill-current">
+                                                <path
+                                                    d="M15.9754 0H2.02539C1.09727 0 0.337891 0.759375 0.337891 1.6875V10.6875C0.337891 11.3062 0.647266 11.8406 1.18164 12.15C1.43477 12.2906 1.74414 12.375 2.02539 12.375C2.30664 12.375 2.58789 12.2906 2.86914 12.15L5.34414 10.7156C5.45664 10.6594 5.56914 10.6312 5.68164 10.6312H15.9473C16.8754 10.6312 17.6348 9.87187 17.6348 8.94375V1.6875C17.6629 0.759375 16.9035 0 15.9754 0ZM16.6785 8.94375C16.6785 9.3375 16.3691 9.64687 15.9754 9.64687H5.70977C5.42852 9.64687 5.11914 9.73125 4.86602 9.87187L2.39102 11.3063C2.16602 11.4187 1.91289 11.4187 1.68789 11.3063C1.46289 11.1938 1.35039 10.9688 1.35039 10.7156V1.6875C1.35039 1.29375 1.65977 0.984375 2.05352 0.984375H16.0035C16.3973 0.984375 16.7066 1.29375 16.7066 1.6875V8.94375H16.6785Z" />
+                                                <path
+                                                    d="M12.5721 3.375H5.03457C4.75332 3.375 4.52832 3.6 4.52832 3.88125C4.52832 4.1625 4.75332 4.3875 5.03457 4.3875H12.6002C12.8814 4.3875 13.1064 4.1625 13.1064 3.88125C13.1064 3.6 12.8533 3.375 12.5721 3.375Z" />
+                                                <path
+                                                    d="M11.3908 6.55322H5.03457C4.75332 6.55322 4.52832 6.77822 4.52832 7.05947C4.52832 7.34072 4.75332 7.56572 5.03457 7.56572H11.4189C11.7002 7.56572 11.9252 7.34072 11.9252 7.05947C11.9252 6.77822 11.6721 6.55322 11.3908 6.55322Z" />
+                                            </svg>
+                                        </span>
+                                        {{comments.count}}
+                                    </p>
+                                    <p class="flex items-center text-sm font-medium text-white">
+                                        <span>
+                                            {% comment %} <svg width="20" height="12" viewBox="0 0 20 12" class="fill-current">
+                                                <path
+                                                    d="M10.2559 3.8125C9.03711 3.8125 8.06836 4.8125 8.06836 6C8.06836 7.1875 9.06836 8.1875 10.2559 8.1875C11.4434 8.1875 12.4434 7.1875 12.4434 6C12.4434 4.8125 11.4746 3.8125 10.2559 3.8125ZM10.2559 7.09375C9.66211 7.09375 9.16211 6.59375 9.16211 6C9.16211 5.40625 9.66211 4.90625 10.2559 4.90625C10.8496 4.90625 11.3496 5.40625 11.3496 6C11.3496 6.59375 10.8496 7.09375 10.2559 7.09375Z" />
+                                                <path
+                                                    d="M19.7559 5.625C17.6934 2.375 14.1309 0.4375 10.2559 0.4375C6.38086 0.4375 2.81836 2.375 0.755859 5.625C0.630859 5.84375 0.630859 6.125 0.755859 6.34375C2.81836 9.59375 6.38086 11.5312 10.2559 11.5312C14.1309 11.5312 17.6934 9.59375 19.7559 6.34375C19.9121 6.125 19.9121 5.84375 19.7559 5.625ZM10.2559 10.4375C6.84961 10.4375 3.69336 8.78125 1.81836 5.96875C3.69336 3.1875 6.84961 1.53125 10.2559 1.53125C13.6621 1.53125 16.8184 3.1875 18.6934 5.96875C16.8184 8.78125 13.6621 10.4375 10.2559 10.4375Z" />
+                                            </svg> {% endcomment %}
+                                            {% if user in post.likes.all %}
+                                            <a href="{% url 'like_post' post.id %}"
+                                                class="mr-2 block text-primary rounded  py-2 pl-5 text-xl font-medium bg-opacity-100 text-white md:mr-4 lg:mr-2 xl:mr-4">
+                                                <i class="fa-sharp fa-solid fa-thumbs-up "></i>
+                                            </a>
+                                            {% else %}
+                                            <a href="{% url 'like_post' post.id %}"
+                                                class="mr-2 block rounded  py-2 px-5 text-xl font-medium bg-opacity-100 text-white md:mr-4 lg:mr-2 xl:mr-4">
+                                                <i class="fa-sharp fa-solid fa-thumbs-up "></i>
+                                            </a>
+                                            {% endif %}
+                                        </span>
+                                        {{post.number_of_likes}}
+                                    </p>
+                                    {% if post.author == user %}
+                                    <p class="mr-5 flex items-center text-sm font-medium text-white md:mr-8">
+                                        <a href="{% url 'post_update' post.pk %}" style="margin-left: 2rem;">
+                                            <svg width="30" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z"
+                                                        stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    <path
+                                                        d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13"
+                                                        stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    </p>
+                                    <p class="mr-5 flex items-center text-sm font-medium text-white md:mr-8">
+                                        <a href="{% url 'post_delete' post.pk %}">
+                                            <svg width="30" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path d="M10 11V17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    </path>
+                                                    <path d="M14 11V17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    </path>
+                                                    <path d="M4 7H20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    </path>
+                                                    <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#ffffff"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#ffffff"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    </p>
+                                    {% endif %}
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="-mx-4 flex flex-wrap">
+                    <div class="w-full px-4 lg:w-8/12">
+                        <div>
+                            <h2 class="wow fadeInUp mb-6 text-[26px] font-bold leading-snug text-dark sm:text-3xl sm:leading-snug md:text-4xl md:leading-snug"
+                                data-wow-delay=".1s
+                    ">
+                                {{post.title}}
+                            </h2>
+                            <pre id="myDiv" style="white-space: pre-line;"
+                                class="wow fadeInUp mb-8 text-base leading-relaxed" data-wow-delay=".1s">
+                                {{post.content|safe}}
+                            </pre>
+
+                        </div>
+
+                        <div class="wow fadeInUp relative mb-12 overflow-hidden rounded bg-primary py-[60px] px-7 text-center lg:px-8"
+                            data-wow-delay=".1s ">
+                            {% if user.is_authenticated %}
+                            <form method="post">
+                                {% csrf_token %}
+                                <textarea name="body" required placeholder="Type comment here ..."
+                                    style="height: 120px; padding: 15px;resize: none;"
+                                    class="mb-4 w-full rounded border border-transparent bg-white bg-opacity-20 text-sm font-medium text-white placeholder-white outline-none focus:border-white focus-visible:shadow-none"></textarea>
+                                <input type="submit" value="Submit"
+                                    class="mb-6 h-[50px] w-full cursor-pointer rounded bg-[#13C296] text-center text-sm font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-90 hover:shadow-lg" />
+                            </form>
+                            {% endif %}
+
+
+                            <div>
+                                <span class="absolute top-0 right-0">
+                                    <svg width="46" height="46" viewBox="0 0 46 46" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="1.39737" cy="44.6026" r="1.39737"
+                                            transform="rotate(-90 1.39737 44.6026)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="1.39737" cy="7.9913" r="1.39737"
+                                            transform="rotate(-90 1.39737 7.9913)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="13.6943" cy="44.6026" r="1.39737"
+                                            transform="rotate(-90 13.6943 44.6026)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="13.6943" cy="7.9913" r="1.39737"
+                                            transform="rotate(-90 13.6943 7.9913)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="25.9911" cy="44.6026" r="1.39737"
+                                            transform="rotate(-90 25.9911 44.6026)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="25.9911" cy="7.9913" r="1.39737"
+                                            transform="rotate(-90 25.9911 7.9913)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="38.288" cy="44.6026" r="1.39737"
+                                            transform="rotate(-90 38.288 44.6026)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="38.288" cy="7.9913" r="1.39737"
+                                            transform="rotate(-90 38.288 7.9913)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="1.39737" cy="32.3058" r="1.39737"
+                                            transform="rotate(-90 1.39737 32.3058)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="13.6943" cy="32.3058" r="1.39737"
+                                            transform="rotate(-90 13.6943 32.3058)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="25.9911" cy="32.3058" r="1.39737"
+                                            transform="rotate(-90 25.9911 32.3058)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="38.288" cy="32.3058" r="1.39737"
+                                            transform="rotate(-90 38.288 32.3058)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="1.39737" cy="20.0086" r="1.39737"
+                                            transform="rotate(-90 1.39737 20.0086)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="13.6943" cy="20.0086" r="1.39737"
+                                            transform="rotate(-90 13.6943 20.0086)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="25.9911" cy="20.0086" r="1.39737"
+                                            transform="rotate(-90 25.9911 20.0086)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="38.288" cy="20.0086" r="1.39737"
+                                            transform="rotate(-90 38.288 20.0086)" fill="white" fill-opacity="0.44" />
+                                    </svg>
+                                </span>
+                                <span class="absolute bottom-0 left-0">
+                                    <svg width="46" height="46" viewBox="0 0 46 46" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="1.39737" cy="44.6026" r="1.39737"
+                                            transform="rotate(-90 1.39737 44.6026)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="1.39737" cy="7.9913" r="1.39737"
+                                            transform="rotate(-90 1.39737 7.9913)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="13.6943" cy="44.6026" r="1.39737"
+                                            transform="rotate(-90 13.6943 44.6026)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="13.6943" cy="7.9913" r="1.39737"
+                                            transform="rotate(-90 13.6943 7.9913)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="25.9911" cy="44.6026" r="1.39737"
+                                            transform="rotate(-90 25.9911 44.6026)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="25.9911" cy="7.9913" r="1.39737"
+                                            transform="rotate(-90 25.9911 7.9913)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="38.288" cy="44.6026" r="1.39737"
+                                            transform="rotate(-90 38.288 44.6026)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="38.288" cy="7.9913" r="1.39737"
+                                            transform="rotate(-90 38.288 7.9913)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="1.39737" cy="32.3058" r="1.39737"
+                                            transform="rotate(-90 1.39737 32.3058)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="13.6943" cy="32.3058" r="1.39737"
+                                            transform="rotate(-90 13.6943 32.3058)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="25.9911" cy="32.3058" r="1.39737"
+                                            transform="rotate(-90 25.9911 32.3058)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="38.288" cy="32.3058" r="1.39737"
+                                            transform="rotate(-90 38.288 32.3058)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="1.39737" cy="20.0086" r="1.39737"
+                                            transform="rotate(-90 1.39737 20.0086)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="13.6943" cy="20.0086" r="1.39737"
+                                            transform="rotate(-90 13.6943 20.0086)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="25.9911" cy="20.0086" r="1.39737"
+                                            transform="rotate(-90 25.9911 20.0086)" fill="white" fill-opacity="0.44" />
+                                        <circle cx="38.288" cy="20.0086" r="1.39737"
+                                            transform="rotate(-90 38.288 20.0086)" fill="white" fill-opacity="0.44" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="w-full px-4 lg:w-4/12">
+                        <div>
+                            <div class="-mx-4 mb-8 flex flex-wrap justify-center">
+                                <div class="w-full px-4">
+                                    <h2 class="wow fadeInUp relative pb-5 text-2xl font-semibold text-dark sm:text-[28px]"
+                                        data-wow-delay=".1s ">
+                                        Comments ({{comments.count}})
+                                    </h2>
+                                    <span class="mb-10 inline-block h-[2px] w-20 bg-primary"></span>
+                                </div>
+                                {% if comments %}
+                                {% for comment in comments %}
+                                <div class="w-full px-4 md:w-1/2 lg:w-full">
+                                    <div class="wow fadeInUp mb-5 flex w-full items-center border-b border-[#F2F3F8] pb-5"
+                                        data-wow-delay=".1s">
+                                        <div class="mr-5 w-full max-w-[60px] max-h-[60px] overflow-hidden rounded-full"
+                                            style="max-width:60px;max-height:60px;">
+                                            <img src="{{comment.name.profile.image.url}}" alt="image"
+                                                class="w-full h-full" />
+                                        </div>
+                                        <div class="w-full">
+                                            <h4>
+                                                <p style="overflow-wrap: anywhere;"
+                                                    class="mb-1 inline-block text-lg font-medium leading-snug text-dark hover:text-primary lg:text-base xl:text-lg">
+                                                    {{comment.body}}
+                                                </p>
+                                            </h4>
+                                            <p class="text-sm text-body-color">{{comment.name}} in
+                                                {{comment.coment_date|date:'d-m-Y'}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% endfor %}
+
+                                {% else %}
+                                <div class="w-full px-4 md:w-1/2 lg:w-full">
+                                    <div class="wow fadeInUp mb-5 flex w-full items-center border-b border-[#F2F3F8] pb-5"
+                                        data-wow-delay=".1s">
+                                        <div class="w-full">
+                                            <h4>
+                                                <p
+                                                    class="mb-1 inline-block text-lg font-medium leading-snug text-dark hover:text-primary lg:text-base xl:text-lg">
+                                                    No comments
+                                                </p>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% endif %}
+                                {% include 'blog/paginator_comment.html' with page=comments %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="-mx-4 flex flex-wrap">
+            <div class="wow fadeInUp mt-14 w-full px-4" data-wow-delay=".2s">
+                <h2 class="relative pb-5 text-2xl font-semibold text-dark sm:text-[28px]">
+                    Related Articles
+                </h2>
+                <span class="mb-10 inline-block h-[2px] w-20 bg-primary"></span>
+            </div>
+            {% lastest_post %}
+        </div>
+    </div>
+</section>
+<!-- ====== Blog Details Section End -->
+
+<script>
+    // الحصول على العنصر div المحدد باستخدام الـ id
+    const myDiv = document.getElementById('myDiv');
+
+    // الحصول على جميع عناصر الروابط داخل الـ div المحدد
+    const links = myDiv.querySelectorAll('a');
+
+    // تغيير لون الروابط داخل الـ div المحدد إلى اللون الجديد
+    function changeLinkColor() {
+        links.forEach(link => {
+            link.style.color = 'blue'; // يمكنك تغيير اللون إلى أي لون ترغبه هنا
+        });
+    }
+
+    // استدعاء الدالة لتغيير لون الروابط داخل الـ div المحدد
+    changeLinkColor();
+</script>
+
+
+{% endblock content %}
