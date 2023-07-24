@@ -1,0 +1,175 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<!-- ====== Banner Section Start -->
+<div class="relative z-10 overflow-hidden bg-primary pt-[120px] pb-[100px] md:pt-[130px] lg:pt-[160px]">
+    <div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert" style="z-index: 999; top: 15%; left: 3%; right: 62%; background-color: green;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+        <div class="-mx-4 flex flex-wrap items-center">
+            <div class="w-full px-4">
+                <div class="text-center">
+                    <h1 class="text-4xl font-semibold text-white">{{user.username}} profile</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <span class="absolute top-0 left-0 z-[-1]">
+            <svg width="495" height="470" viewBox="0 0 495 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="55" cy="442" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50" />
+                <circle cx="446" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20" />
+                <path d="M245.406 137.609L233.985 94.9852L276.609 106.406L245.406 137.609Z" stroke="white"
+                    stroke-opacity="0.08" stroke-width="12" />
+            </svg>
+        </span>
+        <span class="absolute top-0 right-0 z-[-1]">
+            <svg width="493" height="470" viewBox="0 0 493 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="462" cy="5" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50" />
+                <circle cx="49" cy="470" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20" />
+                <path d="M222.393 226.701L272.808 213.192L259.299 263.607L222.393 226.701Z" stroke="white"
+                    stroke-opacity="0.06" stroke-width="13" />
+            </svg>
+        </span>
+    </div>
+</div>
+<!-- ====== Banner Section End -->
+<!-- ====== profile Section Start -->
+<section id="about" class="bg-[#f3f4fe] pt-20 pb-20 lg:pt-[120px] lg:pb-[120px]">
+    <div class="container">
+        <div class="wow fadeInUp bg-white" data-wow-delay=".2s">
+            <div class="-mx-4 flex flex-wrap">
+                <div class="w-full px-4">
+                    <div class="items-center justify-between overflow-hidden border lg:flex">
+                        <div
+                            class="w-full py-12 px-7 sm:px-12 md:p-16 lg:py-9 lg:px-16 xl:p-[70px]">
+                            <span class="mb-5 block bg-primary py-2 px-5 text-sm font-medium text-center text-white">
+                                Profile information
+                            </span>
+                            <hr>
+                            
+                                
+                            <div class="divimg">
+                                <div class="divimage">
+                                    <img src="{{user.profile.image.url}}" alt="img">
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            <div class="divprofile">
+                                <h5>
+                                    Username :
+                                </h5>
+                                <div style='grid-column: span 3 / span 3;'>
+                                    <p class="flex h-14 items-center bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none">{{user.username}}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="divprofile">
+                                <h5>
+                                    Firstname :
+                                </h5>
+                                <div style='grid-column: span 3 / span 3;'>
+                                    <p
+                                        class="flex h-14 items-center bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none">
+                                        {{user.first_name}}
+                                    </p>
+
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="divprofile">
+                                <h5>
+                                    Lastname :
+                                </h5>
+                                <div style='grid-column: span 3 / span 3;'>
+                                    <p
+                                        class="flex h-14 items-center bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none">
+                                        {{user.last_name}}
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="divprofile">
+                                <h5>
+                                    Email :
+                                </h5>
+                                <div style='grid-column: span 3 / span 3;'>
+                                    <p
+                                        class="flex h-14 items-center bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none">
+                                        {{user.email}}
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <hr class="mb-4">
+                            <div style="display: flex;flex-wrap: wrap;gap: 15px;">
+                                <a href="{% url 'updateprofile' %}"
+                                    class="inline-flex items-center justify-center rounded bg-primary py-4 px-6 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-90 hover:shadow-lg">
+                                    Edit profile
+                                </a>
+                                <a href="{% url 'change_password' %}"
+                                    class="inline-flex items-center justify-center rounded bg-primary py-4 px-6 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-90 hover:shadow-lg">
+                                    Change Password
+                                </a>
+                            </div>
+
+                            
+
+                        </div>
+                        </form>
+                        <div class="text-center image-profile">
+                            <div class="relative z-10 inline-block">
+                                <img src="{% static 'assets/images/about/about-image.svg'%}" alt="image"
+                                    class="mx-auto lg:ml-auto" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ====== profile Section End -->
+<!-- ====== Blog Section Start -->
+<section style='padding-top:3rem;' class=" pb-10 lg:pt-[120px] lg:pb-20">
+    <div class="container">
+        <h2 style='margin-bottom:3rem;' class="text-3xl font-bold text-dark sm:text-4xl md:text-[42px]">
+            My Posts :
+        </h2>
+        <div class="-mx-4 flex flex-wrap">
+            {% for post in posts %}
+            <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                <div class="wow fadeInUp group mb-10" data-wow-delay=".1s">
+                    <div class="mb-8 overflow-hidden rounded" style="height:11rem;">
+                        <a href="{% url 'detail' post.id %}" class="block postimage">
+                            <img src="{{post.image.url}}" alt="image" style="height:11rem;" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
+                            
+                            <span class="mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl">
+                            {% if post.title|length > 50 %}
+                            {{post.title|slice:'25'}}...
+                            {% else %}
+                            {{post.title}}
+                            {% endif %}
+                            </span>
+                            
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            {% empty %}
+            <p class='p-8 text-xl font-bold'>You don't have posts :( </p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- ====== Blog Section End -->
+
+{% endblock content %}
