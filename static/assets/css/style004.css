@@ -1,0 +1,181 @@
+.divimg {
+    display: flex;
+    /* grid-template-columns: repeat(3, minmax(0, 1fr)); */
+    padding: 1rem;
+    row-gap: 30px;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.divimage {
+    border-radius: 9999px;
+    border: 1px solid rgb(0, 0, 0);
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.divimage img{
+    width: 100%;
+    height: 100%;
+}
+
+.divprofile {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: 1rem;
+    align-items: center;
+    row-gap: 15px;
+}
+
+@media (max-width:768px) {
+    .divimg div {
+        grid-column: span 3 / span 1;
+    }
+
+    .divprofile {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        padding: 1rem;
+    }
+
+    .editclass{
+        margin-bottom: 1.25rem;
+    }
+}
+
+.errorlist{
+    color: red;
+}
+
+/* input file */
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-file-input::before {
+    content: 'Select your image';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+}
+
+.custom-file-input:hover::before {
+    border-color: black;
+}
+
+.custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+
+
+/* Alert */
+
+
+.alert {
+    padding: 20px;
+    color: white;
+    position: fixed;
+    top: 6%;
+    left: 3%;
+    right: 57%;
+    border-radius: 15px;
+    width: 38%;
+}
+
+.alert div{
+    padding: 0.75rem;
+    background-color: red;
+    margin: 2rem;
+    border-radius: 12px;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+
+
+
+/* image profile */
+
+@media(max-width:960px){
+    .image-profile{
+        display: none;
+    }
+
+    .prevclass{
+        font-size: small;
+    }
+    .nextclass{
+        font-size: small;
+    }
+    .numberpaginate{
+        font-size: small;
+    }
+}
+
+
+/* navbar */
+@media(min-width:540px) {
+    .logclass {
+        display: none;
+    }
+}
+
+
+
+/* posts style */
+.postimage{
+    position: relative;
+}
+
+.postimage img{
+    filter: brightness(0.5) blur(1px);}
+
+.postimage span{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    padding: 1rem;
+    color: white;
+}
+
+.postimage:hover > img{
+    filter: brightness(1) blur(0px);
+}
+
+.deletebutton{
+    width: 48%;
+}
+
+
+/* delete button */
+@media(max-width:495px){
+    .deletebutton{
+        width: 100%;
+    }
+}
